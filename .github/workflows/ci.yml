@@ -1,4 +1,4 @@
-```yaml id="w4o6nn"
+
 name: HTML CI Pipeline
 
 on:
@@ -24,4 +24,4 @@ jobs:
           for file in $(find . -name "*.js"); do
             node --check "$file"
           done
-```
+
