@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaChat - Profile Console Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="mode-dark accent-orbit h-screen w-screen overflow-hidden flex items-center justify-center p-3 relative">
+
+    <div id="ambient-aura" class="ambient-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[650px] h-[650px] pointer-events-none rounded-full transition-all duration-500"></div>
+
+    <div class="absolute top-6 left-6 z-30">
+        <h1 class="text-xl font-bold tracking-tight flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full gradient-bg transition-all duration-300"></span>
+            <span class="text-current">NovaChat</span> <span class="gradient-text transition-all duration-300">Hub</span>
+        </h1>
+    </div>
+
+    <div class="glass-panel w-full max-w-2xl rounded-2xl shadow-2xl flex flex-col h-[82vh] max-h-[560px] relative z-20 transition-all duration-300">
+        
+        <div class="header-panel p-3.5 sm:p-4 flex items-center justify-between rounded-t-2xl transition-all duration-300 relative">
+            <div class="flex items-center gap-2.5">
+                <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                <div>
+                    <h3 class="text-xs font-bold tracking-wide">NovaChat Monitor</h3>
+                    <p class="text-[9px] sm:text-[10px] opacity-60">System validation clusters active</p>
+                </div>
+            </div>
+
+            <div class="relative">
+                <button id="theme-menu-btn" class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 rounded-xl backdrop-blur-md transition-all duration-200">
+                    <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+                    </svg>
+                </button>
+
+                <div id="theme-dropdown-menu" class="hidden absolute right-0 mt-2 w-44 rounded-xl shadow-2xl bg-white dark:bg-[#0f1422] border border-gray-200 dark:border-white/10 p-3.5 space-y-3.5 z-50">
+                    <div>
+                        <p class="text-[9px] uppercase font-bold tracking-wider text-gray-400 dark:text-gray-500 mb-2">Display Mode</p>
+                        <div class="flex gap-1.5">
+                            <button id="mode-light-toggle" class="flex-1 py-1 px-1.5 text-center text-[11px] font-semibold border border-gray-200 dark:border-white/5 hover:bg-gray-100 dark:hover:bg-white/5 rounded-lg text-gray-700 dark:text-gray-300 transition">Light</button>
+                            <button id="mode-dark-toggle" class="flex-1 py-1 px-1.5 text-center text-[11px] font-semibold border border-gray-200 dark:border-white/5 hover:bg-gray-100 dark:hover:bg-white/5 rounded-lg text-gray-700 dark:text-gray-300 transition">Dark</button>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-100 dark:border-white/5"></div>
+                    <div>
+                        <p class="text-[9px] uppercase font-bold tracking-wider text-gray-400 dark:text-gray-500 mb-2">Color Swatch</p>
+                        <div class="space-y-1">
+                            <button id="accent-orbit-btn" class="w-full flex items-center gap-2 p-1 hover:bg-gray-100 dark:hover:bg-white/5 rounded-lg text-[11px] font-medium text-gray-600 dark:text-gray-300 transition">
+                                <span class="w-2.5 h-2.5 rounded bg-gradient-to-br from-violet-500 to-cyan-400"></span> Orbit
+                            </button>
+                            <button id="accent-cyber-btn" class="w-full flex items-center gap-2 p-1 hover:bg-gray-100 dark:hover:bg-white/5 rounded-lg text-[11px] font-medium text-gray-600 dark:text-gray-300 transition">
+                                <span class="w-2.5 h-2.5 rounded bg-gradient-to-br from-emerald-400 to-green-600"></span> Cyber
+                            </button>
+                            <button id="accent-ruby-btn" class="w-full flex items-center gap-2 p-1 hover:bg-gray-100 dark:hover:bg-white/5 rounded-lg text-[11px] font-medium text-gray-600 dark:text-gray-300 transition">
+                                <span class="w-2.5 h-2.5 rounded bg-gradient-to-br from-red-500 to-rose-600"></span> Ruby
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="chat-stream" class="flex-1 p-3.5 sm:p-5 space-y-4 overflow-y-auto chat-scroll flex flex-col justify-start">
+            <div class="flex justify-start items-start gap-2.5">
+                <div class="w-5 h-5 rounded-md gradient-bg flex items-center justify-center text-[9px] text-white font-bold flex-shrink-0 mt-0.5 transition-all duration-300">N</div>
+                <div class="bg-black/5 dark:bg-white/[0.02] border border-black/5 dark:border-white/5 px-3.5 py-2.5 rounded-2xl rounded-tl-none max-w-[88%] text-[11px] sm:text-xs leading-relaxed">
+                    Hello! Secure connection initialized. Tap any preset token below to stage an operational command inside the entry field framework:
+                </div>
+            </div>
+        </div>
+
+        <div id="suggestions-panel" class="px-3 sm:px-5 pb-3 pt-2 flex flex-col gap-1.5 max-h-[140px] overflow-y-auto chat-scroll border-t border-black/5 dark:border-white/[0.02] bg-black/[0.01] dark:bg-white/[0.01]"></div>
+
+        <div class="footer-panel p-3 flex items-center gap-2.5 sm:gap-3 rounded-b-2xl transition-all duration-300">
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-black/10 dark:bg-black/40 border border-black/10 dark:border-white/10 flex-shrink-0 overflow-hidden flex items-center justify-center p-0.5">
+                <img src="avatar.png" alt="Bot Icon" class="w-full h-full object-cover rounded-lg" onerror="this.src='https://img.icons8.com/isometric/50/space-astronaut.png'" />
+            </div>
+            <div class="flex-1">
+                <input type="text" id="user-input-box" placeholder="Select an option above or write custom text query..." class="input-panel w-full rounded-xl px-3.5 py-2 sm:py-2.5 text-xs sm:text-sm focus:outline-none placeholder-gray-500 font-medium transition duration-200">
+            </div>
+            <button id="send-action-btn" onclick="executeManualSend()" class="bg-gray-300 dark:bg-gray-800 text-gray-500 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 cursor-not-allowed" disabled>
+                Send
+            </button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
