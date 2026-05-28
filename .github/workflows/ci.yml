@@ -1,4 +1,4 @@
-```yaml id="n0b85j"
+```yaml id="w4o6nn"
 name: HTML CI Pipeline
 
 on:
@@ -21,5 +21,7 @@ jobs:
 
       - name: Check JavaScript Syntax
         run: |
-          find . -name "*.js" -exec node --check {} \;
+          for file in $(find . -name "*.js"); do
+            node --check "$file"
+          done
 ```
