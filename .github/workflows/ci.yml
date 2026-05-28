@@ -1,0 +1,25 @@
+name: HTML CI Pipeline
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Validate HTML
+        uses: Cyb3r-Jak3/html5validator-action@v7.2.0
+        with:
+          root: .
+
+      - name: Check JavaScript Files
+        run: |
+          for file in $(find . -name "*.js"); do
+            node --check "$file"
+          done
